@@ -81,5 +81,40 @@ program.command("remove")
             }
         })
     })
-    
+program.command("mark")
+    .description("To mark a Todo done")
+    .argument('<Todo>','The todo to mark')
+    .argument('<Date>','Enter the date in the format yyyy-mm-dd')
+    .action((Todo,Date)=>{
+        const fileName = `${Date}.json`;
+        const filePath = path.join(__dirname, fileName);
+        fs.readFile(filePath,'utf-8',(err,data)=>{
+            if(err){
+                if (err.code === 'ENOENT') {
+                    console.log("File Does not exist");
+                    return;
+                } else {
+                    console.log(err);
+                    return;
+                }
+            }else{
+                let jsonData = JSON.parse(data);
+                jsonData.forEach(obj => {
+                    if (obj.Title === Todo) {
+                        obj.Done = true; 
+                    }
+                });
+
+                const updated = JSON.stringify(jsonData,null,2);
+
+                fs.writeFile(filePath,updated,'utf-8',(err)=>{
+                    if(err){
+                        console.log(err);
+                    }else{
+                        console.log("Task Completed well done!!");
+                    }
+                })
+            }
+        })
+    })
 program.parse();
