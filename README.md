@@ -17,6 +17,11 @@ node Todo.js add <Time> <Todo>
 ```bash
 node Todo.js remove <Todo> <Date>
 ```
+- Mark a To-do done
+- To Mark an existing to-do item done, use the mark command followed by the title and the date of the JSON file:
+```bash
+node Todo.js mark <Todo> <Date>
+```
 - For help
 ```bash
 node Todo.js -h
