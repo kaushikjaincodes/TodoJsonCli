@@ -3,6 +3,7 @@ This code is a simple command-line interface (CLI) tool for managing a to-do lis
 ## Features
 - **Add** a new to-do item with a deadline.
 - **Remove** an existing to-do item by specifying the title and date.
+- **Mark** an existing to-do item by specifying the title and date as done.
 ## Installation
 1. ```Clone the repository```
 2. ```npm install```
